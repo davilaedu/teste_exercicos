@@ -1,6 +1,6 @@
 #!/usr/bin/python -tt
 # Exercícios by Nick Parlante (CodingBat)
-
+#teste
 # A. dormir
 # dia_semana é True para dias na semana
 # feriado é True nos feriados
