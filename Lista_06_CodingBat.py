@@ -83,8 +83,7 @@ def test(obtido, esperado):
     prefixo = ' Parabéns!'
   else:
     prefixo = ' Ainda não'
-  print ('%s obtido: %s esperado: %s'
-         % (prefixo, repr(obtido), repr(esperado)))
+  print ('{0!s} obtido: {1!s} esperado: {2!s}'.format(prefixo, repr(obtido), repr(esperado)))
 
 def main():
   print ('Oba! Hoje vou ficar dormindo!')
