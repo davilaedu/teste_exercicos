@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93ab913b-8320-41e4-a6be-241076a4384c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lista_06_CodingBat.py" afterPath="$PROJECT_DIR$/Lista_06_CodingBat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="testes_de_teste_zumbi.iws" />
     <ignored path=".idea/workspace.xml" />
