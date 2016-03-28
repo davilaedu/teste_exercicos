@@ -1,13 +1,20 @@
-#!/usr/bin/python -tt
+# coding=utf-8
+# !/usr/bin/python -tt
 # Exercícios by Nick Parlante (CodingBat)
-#teste
+# teste
 # A. dormir
 # dia_semana é True para dias na semana
 # feriado é True nos feriados
 # você pode ficar dormindo quando é feriado ou não é dia semana
 # retorne True ou False conforme você vá dormir ou não
 def dormir(dia_semana, feriado):
-  return 
+    if not dia_semana:
+        return True
+    if dia_semana and not feriado:
+        return False
+    else:
+        return True
+
 
 # B. alunos_problema
 # temos dois alunos a e b
@@ -15,7 +22,15 @@ def dormir(dia_semana, feriado):
 # temos problemas quando ambos estão sorrindo ou ambos não estão sorrindo
 # retorne True quando houver problemas
 def alunos_problema(a_sorri, b_sorri):
-  return 
+    if a_sorri and b_sorri:
+        return True
+    if not a_sorri and b_sorri:
+        return False
+    if a_sorri and not b_sorri:
+        return False
+    if not a_sorri and not b_sorri:
+        return True
+
 
 # C. soma_dobro
 # dados dois números inteiros retorna sua soma
@@ -23,7 +38,10 @@ def alunos_problema(a_sorri, b_sorri):
 # soma_dobro(1, 2) -> 3
 # soma_dobro(2, 2) -> 8
 def soma_dobro(a, b):
-  return
+    if a == b:
+        return 2 * (a + b)
+    return a + b
+
 
 # D. diff21
 # dado um inteiro n retorna a diferença absoluta entre n e 21
@@ -32,21 +50,62 @@ def soma_dobro(a, b):
 # diff21(25) -> 8
 # dica: abs(x) retorna o valor absoluto de x
 def diff21(n):
-  return 
+    if n < 21:
+        return abs(n - 21)
+
+    return 2 * abs((n - 21))
+
+
+#     test(diff21(19), 2)
+#     test(diff21(10), 11)
+#     test(diff21(21), 0)
+#     test(diff21(22), 2)
+#     test(diff21(25), 8)
+#     test(diff21(30), 18)
+
 
 # E. papagaio
 # temos um papagaio que fala alto
 # hora é um parâmetro entre 0 e 23
 # temos problemas se o papagaio estiver falando
 # antes da 7 ou depois das 20
+import time
+
+
 def papagaio(falando, hora):
-  return
+    horario = []
+    for horas in range(7, 21):
+        horario.append(horas)
+    if falando is True:
+        if hora not in horario:
+            return True
+    return False
+
+
+#
 
 # F. dez
 # dados dois inteiros a e b
 # retorna True se um dos dois é 10 ou a soma é 10
 def dez(a, b):
-  return 
+    x = a + b
+    if a == 10 or b == 10:
+        return True
+    elif x == 10:
+        return True
+    return False
+
+
+# test(dez(9, 10), True)
+# test(dez(9, 9), False)
+# test(dez(1, 9), True)
+# test(dez(10, 1), True)
+# test(dez(10, 10), True)
+# test(dez(8, 2), True)
+# test(dez(8, 3), False)
+# test(dez(10, 42), True)
+# test(dez(12, -2), True)
+
 
 # G. dista10
 # seja um inteiro n
@@ -56,7 +115,28 @@ def dez(a, b):
 # dista10(90) -> True
 # dista10(89) -> False
 def dista10(n):
-  return
+    x = abs(n - 100)
+    y = abs(n - 200)
+    if x <= 10 or y <= 10:
+        return True
+    return False
+
+
+# test(dista10(93), True)
+# test(dista10(90), True)
+# test(dista10(89), False)
+# test(dista10(110), True)
+# test(dista10(111), False)
+# test(dista10(121), False)
+# test(dista10(0), False)
+# test(dista10(5), False)
+# test(dista10(191), True)
+# test(dista10(189), False)
+# test(dista10(190), True)
+# test(dista10(200), True)
+# test(dista10(210), True)
+# test(dista10(211), False)
+# test(dista10(290), False)
 
 # H. apaga
 # seja uma string s e um inteiro n
@@ -64,7 +144,22 @@ def dista10(n):
 # apaga('kitten', 1) -> 'ktten'
 # apaga('kitten', 4) -> 'kittn'
 def apaga(s, n):
-  return 
+    palavra  = list(s)
+    del palavra[n]
+    palav = ''.join(palavra)
+    return palav
+
+
+# test(apaga('kitten', 1), 'ktten')
+# test(apaga('kitten', 0), 'itten')
+# test(apaga('kitten', 4), 'kittn')
+# test(apaga('Hi', 0), 'i')
+# test(apaga('Hi', 1), 'H')
+# test(apaga('code', 0), 'ode')
+# test(apaga('code', 1), 'cde')
+# test(apaga('code', 2), 'coe')
+# test(apaga('code', 3), 'cod')
+# test(apaga('chocolate', 8), 'chocolat')
 
 # I. troca
 # seja uma string s
@@ -74,113 +169,131 @@ def apaga(s, n):
 # troca('a') -> 'a'
 # troca('ab') -> 'ba'
 def troca(s):
-  return
+    tamanho_pal = len(s)
+    if tamanho_pal <= 1:
+        return s
+    s = list(s)
+    s[0], s[-1] = s[-1], s[0]
+    s =''.join(s)
 
+    return s
+
+
+# test(troca('code'), 'eodc')
+# test(troca('a'), 'a')
+# test(troca('ab'), 'ba')
+# test(troca('abc'), 'cba')
+# test(troca(''), '')
+# test(troca('Chocolate'), 'ehocolatC')
+# test(troca('nythoP'), 'Python')
+# test(troca('hello'), 'oellh')
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(obtido, esperado):
-  if obtido == esperado:
-    prefixo = ' Parabéns!'
-  else:
-    prefixo = ' Ainda não'
-  print ('%s obtido: %s esperado: %s'
-         % (prefixo, repr(obtido), repr(esperado)))
+    if obtido == esperado:
+        prefixo = ' Parabéns!'
+    else:
+        prefixo = ' Ainda não'
+    print ('%s obtido: %s esperado: %s'
+           % (prefixo, repr(obtido), repr(esperado)))
+
 
 def main():
-  print ('Oba! Hoje vou ficar dormindo!')
-  test(dormir(False, False), True)
-  test(dormir(True, False), False)
-  test(dormir(False, True), True)
-  test(dormir(True, True), True)
+    print ('Oba! Hoje vou ficar dormindo!')
+    test(dormir(False, False), True)
+    test(dormir(True, False), False)
+    test(dormir(False, True), True)
+    test(dormir(True, True), True)
 
-  print ()
-  print ('Alunos problema')
-  test(alunos_problema(True, True), True)
-  test(alunos_problema(False, False), True)
-  test(alunos_problema(True, False), False)
-  test(alunos_problema(False, True), False)
+    print ()
+    print ('Alunos problema')
+    test(alunos_problema(True, True), True)
+    test(alunos_problema(False, False), True)
+    test(alunos_problema(True, False), False)
+    test(alunos_problema(False, True), False)
 
-  print ()
-  print ('Soma dobro')
-  test(soma_dobro(1, 2), 3)
-  test(soma_dobro(3, 2), 5)
-  test(soma_dobro(2, 2), 8)
-  test(soma_dobro(-1, 0), -1)
-  test(soma_dobro(0, 0), 0)
-  test(soma_dobro(0, 1), 1)
+    print ()
+    print ('Soma dobro')
+    test(soma_dobro(1, 2), 3)
+    test(soma_dobro(3, 2), 5)
+    test(soma_dobro(2, 2), 8)
+    test(soma_dobro(-1, 0), -1)
+    test(soma_dobro(0, 0), 0)
+    test(soma_dobro(0, 1), 1)
 
-  print ()
-  print ('Diff21')
-  test(diff21(19), 2)
-  test(diff21(10), 11)
-  test(diff21(21), 0)
-  test(diff21(22), 2)
-  test(diff21(25), 8)
-  test(diff21(30), 18)
+    print ()
+    print ('Diff21')
+    test(diff21(19), 2)
+    test(diff21(10), 11)
+    test(diff21(21), 0)
+    test(diff21(22), 2)
+    test(diff21(25), 8)
+    test(diff21(30), 18)
 
-  print ()
-  print ('Papagaio')
-  test(papagaio(True, 6), True)
-  test(papagaio(True, 7), False)
-  test(papagaio(False, 6), False)
-  test(papagaio(True, 21), True)
-  test(papagaio(False, 21), False)
-  test(papagaio(True, 23), True)
-  test(papagaio(True, 20), False)
+    print ()
+    print ('Papagaio')
+    test(papagaio(True, 6), True)
+    test(papagaio(True, 7), False)
+    test(papagaio(False, 6), False)
+    test(papagaio(True, 21), True)
+    test(papagaio(False, 21), False)
+    test(papagaio(True, 23), True)
+    test(papagaio(True, 20), False)
 
-  print ()
-  print ('Dez')
-  test(dez(9, 10), True)
-  test(dez(9, 9), False)
-  test(dez(1, 9), True)
-  test(dez(10, 1), True)
-  test(dez(10, 10), True)
-  test(dez(8, 2), True)
-  test(dez(8, 3), False)
-  test(dez(10, 42), True)
-  test(dez(12, -2), True)
+    print ()
+    print ('Dez')
+    test(dez(9, 10), True)
+    test(dez(9, 9), False)
+    test(dez(1, 9), True)
+    test(dez(10, 1), True)
+    test(dez(10, 10), True)
+    test(dez(8, 2), True)
+    test(dez(8, 3), False)
+    test(dez(10, 42), True)
+    test(dez(12, -2), True)
 
-  print ()
-  print ('Dista 10')
-  test(dista10(93), True)
-  test(dista10(90), True)
-  test(dista10(89), False)
-  test(dista10(110), True)
-  test(dista10(111), False)
-  test(dista10(121), False)
-  test(dista10(0), False)
-  test(dista10(5), False)
-  test(dista10(191), True)
-  test(dista10(189), False)
-  test(dista10(190), True)
-  test(dista10(200), True)
-  test(dista10(210), True)
-  test(dista10(211), False)
-  test(dista10(290), False)
+    print ()
+    print ('Dista 10')
+    test(dista10(93), True)
+    test(dista10(90), True)
+    test(dista10(89), False)
+    test(dista10(110), True)
+    test(dista10(111), False)
+    test(dista10(121), False)
+    test(dista10(0), False)
+    test(dista10(5), False)
+    test(dista10(191), True)
+    test(dista10(189), False)
+    test(dista10(190), True)
+    test(dista10(200), True)
+    test(dista10(210), True)
+    test(dista10(211), False)
+    test(dista10(290), False)
 
-  print ()
-  print ('Apaga')
-  test(apaga('kitten', 1), 'ktten')
-  test(apaga('kitten', 0), 'itten') 
-  test(apaga('kitten', 4), 'kittn')
-  test(apaga('Hi', 0), 'i')
-  test(apaga('Hi', 1), 'H')
-  test(apaga('code', 0), 'ode')
-  test(apaga('code', 1), 'cde')
-  test(apaga('code', 2), 'coe')
-  test(apaga('code', 3), 'cod')
-  test(apaga('chocolate', 8), 'chocolat')
+    print ()
+    print ('Apaga')
+    test(apaga('kitten', 1), 'ktten')
+    test(apaga('kitten', 0), 'itten')
+    test(apaga('kitten', 4), 'kittn')
+    test(apaga('Hi', 0), 'i')
+    test(apaga('Hi', 1), 'H')
+    test(apaga('code', 0), 'ode')
+    test(apaga('code', 1), 'cde')
+    test(apaga('code', 2), 'coe')
+    test(apaga('code', 3), 'cod')
+    test(apaga('chocolate', 8), 'chocolat')
 
-  print ()
-  print ('Troca letras')
-  test(troca('code'), 'eodc')	    
-  test(troca('a'), 'a')
-  test(troca('ab'), 'ba')
-  test(troca('abc'), 'cba')
-  test(troca(''), '')
-  test(troca('Chocolate'), 'ehocolatC')
-  test(troca('nythoP'), 'Python')
-  test(troca('hello'), 'oellh')
-  
+    print ()
+    print ('Troca letras')
+    test(troca('code'), 'eodc')
+    test(troca('a'), 'a')
+    test(troca('ab'), 'ba')
+    test(troca('abc'), 'cba')
+    test(troca(''), '')
+    test(troca('Chocolate'), 'ehocolatC')
+    test(troca('nythoP'), 'Python')
+    test(troca('hello'), 'oellh')
+
+
 if __name__ == '__main__':
-  main()
+    main()
